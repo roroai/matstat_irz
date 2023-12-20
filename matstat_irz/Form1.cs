@@ -33,6 +33,7 @@ namespace matstat_irz
         private void inputButton_Click(object sender, EventArgs e)
         {
             int n;
+            inputBox.Text = inputBox.Text.Replace(",", ".");
             String[] ss = inputBox.Text.Split(' ');
             n = ss.Count();
             double[] array = new double[n];
@@ -138,6 +139,7 @@ namespace matstat_irz
 
             // Диаграммы для х
             xchart1.Series[0].Points.Clear();
+            xchart2.Series[0]["PointWidth"] = "1";
             xchart2.Series[0].Points.Clear();
             for (int i = 0; i < xn.Length; i++)
             {
@@ -192,6 +194,7 @@ namespace matstat_irz
 
             // Диаграммы для y
             ychart1.Series[0].Points.Clear();
+            ychart2.Series[0]["PointWidth"] = "1";
             ychart2.Series[0].Points.Clear();
             for (int i = 0; i < yn.Length; i++)
             {
@@ -255,9 +258,9 @@ namespace matstat_irz
             ys = Math.Sqrt((int)yh * (int)yh * sv * sv);
 
             labeltx1.Text = "X̄ = " + xslash.ToString();
-            labeltx2.Text = "Sx = " + xs.ToString();
+            labeltx2.Text = "Sx = " + Math.Round(xs, 2).ToString();
             labelty1.Text = "Ȳ = " + yslash.ToString();
-            labelty2.Text = "Sy = " + ys.ToString();
+            labelty2.Text = "Sy = " + Math.Round(ys, 2).ToString();
 
             button3.Enabled = true;
         }
